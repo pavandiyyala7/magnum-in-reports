@@ -1,0 +1,58 @@
+<div class="canteen-menu-container">
+  <div class="flex-box">
+    <div class="item-actions">
+      <button pButton type="button" class="p-button-info speical-btn">
+        Food Order
+      </button>
+      <button pButton type="button" class="p-button-info speical-btn">
+        Transaction
+      </button>
+    </div>
+    <p class="text">Order Accept Time: {{orderAcceptTime}}</p>
+  </div>
+  
+
+  <h2 class="menu-title">Please Select</h2>
+
+  <div class="menu-items">
+    <div *ngFor="let item of foodMenu" class="menu-item">
+      <div class="item-image-container">
+        <img [src]="item.image" alt="{{ item.name }}" class="item-image">
+      </div>
+      
+      <div class="item-buttons">
+        <div class="item-details">
+          <h3 class="item-name">{{ item.name }}</h3>
+          <p class="time-slot">{{item.timeSlot}}</p>
+        </div>
+  
+        <div class="item-actions">
+          <button *ngIf="item.booked" 
+                  pButton type="button" 
+                  class="p-button-danger" 
+                  (click)="cancelBooking(item)">
+            Cancel Food
+          </button>
+          <button *ngIf="!item.booked" 
+                  pButton type="button" 
+                  class="p-button-warning" 
+                  icon="pi pi-plus"
+                  (click)="bookItem(item)">
+            Book Food
+          </button>
+          <button pButton *ngIf="item.booked" type="button" class="p-button-info booked-button">
+            <div class="booked-content">
+              <div>Booked</div>
+              <div class="time-slot">At {{item.bookedTime}}</div>
+            </div>
+          </button>
+        </div>
+      </div>
+    </div>
+    
+    <div class="footer-section">
+      <p class="footer">Thanks, Please enjoy your food</p>
+      <p class="footer">{{user.name}}-{{user.id}}</p>
+    </div>
+  </div>
+</div>

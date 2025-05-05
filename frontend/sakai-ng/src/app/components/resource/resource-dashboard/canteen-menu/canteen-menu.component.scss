@@ -1,0 +1,214 @@
+:host {
+    display: block;
+    padding: 1rem;
+    background-color: #1e1e2f;
+    color: white;
+  }
+  
+  .canteen-menu-container {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  .flex-box{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .menu-title {
+    color: #ff3b5c;
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+  
+  .menu-items {
+    display: grid;
+    gap: 1.5rem;
+    text-align: center;
+
+  }
+  
+  .menu-item {
+    display: flex;
+    align-items: center;
+    background-color: #2b2b3d;
+    border-radius: 12px;
+    padding: 0.5rem;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  
+    &:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.35);
+    }
+  }
+  .speical-btn{
+    max-width: 10rem;
+  }
+  .item-image-container {
+    margin-right: 1rem;
+  }
+  
+  .item-image {
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+    border-radius: 50%;
+    // border: 3px solid #ff3b5c;
+  }
+  
+  .item-details {
+    flex: 1;
+  }
+  
+  .item-name {
+    font-size: 1.4rem;
+    font-weight: 600;
+    margin: 0;
+    color: #ffffff;
+  }
+  
+  .item-actions {
+    display: flex;
+    gap: 1rem;
+    min-width: 18rem;
+  
+    button {
+      min-width: 120px;
+    }
+  }
+  .item-buttons{
+    display: flex;
+    justify-content: space-between;
+    width: 80%;
+    }
+    .footer{
+        margin: 0.2rem;
+    }
+  /* Responsive adjustments */
+//   @media (max-width: 768px) {
+//     .menu-item {
+//       text-align: center;
+//     }
+    
+    
+//     .item-image-container {
+//       margin-right: 0;
+//       margin-bottom: 1rem;
+//     }
+  
+//     .item-details {
+//       margin-bottom: 1rem;
+//     }
+  
+//     .item-actions {
+//       width: 100%;
+//       justify-content: center;
+//       flex-wrap: wrap;
+//       flex-direction: row;
+//     }
+//     .item-buttons{
+//         display: flex;
+//         flex-direction: column;
+//         }
+//   }
+  
+  @media (max-width: 480px) {
+    :host {
+      padding: 1rem;
+    }
+    .item-buttons{
+        display: flex;
+        flex-direction: column;
+        }
+    .item-actions {
+    //   flex-direction: column;
+      width: 100%;
+  
+      button {
+        width: fit-content;
+      }
+    }
+    .menu-title {
+      color: #ff3b5c;
+      font-size: 1rem;
+      margin-bottom: 0.8rem;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    .flex-box{
+      flex-direction: column;
+      text-align: left;
+      align-items: flex-start;
+    }
+    .item-details{
+      display: flex;
+      flex-direction: row;
+      gap: 0.2rem;
+    }
+    .item-image {
+        width: 50px;
+        height: 50px;
+    }
+    .menu-items {
+        display: grid;
+        gap: 0.5rem;
+        text-align: center;
+    
+      }
+  }
+
+  .booked-status {
+    color: #4CAF50;
+    font-weight: bold;
+    font-size: 0.9rem;
+    margin-left: 0.5rem;
+  }
+
+  .order-info {
+  background-color: #f8f9fa;
+  padding: 10px;
+  margin-bottom: 15px;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+.time-slot {
+  color: #666;
+  font-size: 0.9em;
+  margin: 5px 0;
+}
+
+.booked-time {
+  color: #28a745;
+  font-weight: bold;
+  font-size: 0.9em;
+}
+
+.footer-section {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.booked-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+  .booked-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    line-height: 1.2;
+    
+    .time-slot {
+      font-size: 0.8em;
+      opacity: 0.9;
+      margin-top: 2px;
+    }
+  }
+}

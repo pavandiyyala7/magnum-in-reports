@@ -1,0 +1,74 @@
+:host ::ng-deep .p-card {
+    border: 2px solid #007ad9;
+    border-radius: 8px;
+  }
+  
+  .header-row {
+    text-align: center;
+    // background-color: rgb(130, 183, 204);
+  }
+  .filter-container {
+    display: flex;
+    gap: 1rem; 
+    align-items: flex-end;
+  }
+  .header-row h2 {
+    color: #274c77;
+    font-weight: bold;
+    margin-bottom: 0;
+  }
+  
+  .date-range {
+    font-size: 1rem;
+    color: #555;
+  }
+  
+  ::ng-deep .negative {
+    color: red !important;
+    font-weight: bold;
+  }
+
+  ::ng-deep td,th{
+    // background-color: black;
+    font-size: 1rem;
+    padding: 0.2rem;
+  }
+  ::ng-deep th{
+    background-color: rgb(130, 183, 204);
+  }
+  
+  .no-data-message {
+    text-align: center;
+    padding: 20px;
+    font-size: 16px;
+    color: #666;
+  }
+  
+  ::ng-deep .p-paginator {
+    justify-content: flex-end;
+    // padding: 0;
+  }
+
+  ::ng-deep .p-paginator .p-paginator-first,
+::ng-deep .p-paginator .p-paginator-prev,
+::ng-deep .p-paginator .p-paginator-pages,
+::ng-deep .p-paginator .p-paginator-next,
+::ng-deep .p-paginator .p-paginator-last,
+::ng-deep .p-paginator .p-paginator-rpp-options,
+::ng-deep .p-paginator .p-paginator-page-options {
+  display: none !important;
+}
+
+.mr-1{
+  margin-right: 1rem;
+}
+.mb-2{
+  margin-bottom: 5rem;
+}
+.current-page {
+  color: #0047ab;
+  font-weight: 500;
+  display: inline-flex;
+  align-items: center;
+  background-color: red;
+}

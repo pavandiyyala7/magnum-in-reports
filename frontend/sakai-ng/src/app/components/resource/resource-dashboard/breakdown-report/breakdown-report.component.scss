@@ -1,0 +1,35 @@
+:host ::ng-deep .p-card {
+    border: 2px solid #007ad9;
+    border-radius: 8px;
+  }
+  
+  h2 {
+    color: #274c77;
+    font-weight: bold;
+  }
+  
+  .p-table {
+    margin-top: 1rem;
+  }
+  
+  .text-center {
+    text-align: center;
+  }
+  
+  ::ng-deep td,th{
+    // background-color: black;
+    font-size: 0.9rem;
+    padding: 0.2rem;
+  }
+  .filter-container {
+    display: flex;
+    gap: 1rem; 
+    align-items: flex-end;
+  }
+
+  .no-data-message {
+    text-align: center;
+    padding: 20px;
+    font-size: 16px;
+    color: #666;
+  }

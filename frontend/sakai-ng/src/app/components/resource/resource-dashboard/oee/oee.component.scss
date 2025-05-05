@@ -1,0 +1,415 @@
+.card {
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    padding: 0.1rem 0;
+  }
+  
+  
+  .relative {
+    position: relative;
+  }
+  .flex-g-1{
+    flex-grow: 1;
+  }
+  .flex-g-2{
+    flex-grow: 2;
+  }
+    
+  .rounded-lg {
+    border-radius: 0.5rem;
+  }
+  
+  @media (max-width: 768px) {
+    .grid {
+      grid-template-columns: 1fr !important;
+    }
+    
+    .summary-cards {
+      grid-template-columns: repeat(2, 1fr) !important;
+    }
+  }
+  
+  
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 4px;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background: #c1c1c1;
+    border-radius: 4px;
+    
+    &:hover {
+      background: #a8a8a8;
+    }
+  }
+  
+  .p-4 {
+    padding: 1rem;
+  }
+  
+  .mb-2 {
+    margin-bottom: 0.5rem;
+  }
+  
+  .mb-4 {
+    margin-bottom: 1rem;
+  }
+  
+  .mt-1 {
+    margin-top: 0.25rem;
+  }
+  
+  .mt-2 {
+    margin-top: 0.5rem;
+  }
+  
+  .mt-4 {
+    margin-top: 1rem;
+  }
+  
+  .mt-6 {
+    margin-top: 1.5rem;
+  }
+
+  .flex {
+    display: flex;
+    width: 100%;
+  }
+  
+  .justify-between {
+    justify-content: space-between;
+  }
+  
+  .items-center {
+    align-items: center;
+  }
+  
+  .justify-center {
+    justify-content: center;
+  }
+  
+  .flex-col {
+    flex-direction: column;
+  }
+  
+  .filter-container {
+    display: flex;
+    gap: 1rem; 
+    align-items: flex-end;
+  }
+  
+  .filter-item {
+    flex: 1; 
+    min-width: 0; 
+  }
+  
+  .filter-label {
+    display: block;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: #374151;
+    margin-bottom: 0.5rem;
+  }
+  
+  ::ng-deep .filter-item .p-calendar,
+  ::ng-deep .filter-item .p-dropdown {
+    width: 100%;
+    border: 0.2px solid #aed8e6 !important;
+    border-radius: 0.5rem;
+
+  }
+
+  .max-w-xs {
+    max-width: 20rem;
+  }
+  
+  
+  .text-xs {
+    font-size: 0.75rem;
+    line-height: 1rem;
+  }
+  
+  .text-sm {
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+  }
+  
+  .text-lg {
+    font-size: 1.125rem;
+    line-height: 1.75rem;
+  }
+  
+  .text-2xl {
+    font-size: 1.5rem;
+    line-height: 2rem;
+  }
+  
+  .text-3xl {
+    font-size: 1.875rem;
+    line-height: 2.25rem;
+  }
+  
+  .font-medium {
+    font-weight: 500;
+  }
+  
+  .font-semibold {
+    font-weight: 600;
+  }
+  
+  .font-bold {
+    font-weight: 700;
+  }
+  
+  .text-center {
+    text-align: center;
+  }
+  
+  
+  .border-b {
+    border-bottom: 1px solid #e5e7eb;
+  }
+  
+  
+  .overflow-hidden {
+    overflow: hidden;
+  }
+  
+  
+  .truncate {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  ::ng-deep .p-paginator {
+    justify-content: flex-end;
+    padding: 0;
+  }
+  
+  .chart-tooltip {
+    background-color: #1f2937 !important;
+    border-radius: 0.375rem !important;
+    padding: 0.5rem 0.75rem !important;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06) !important;
+    
+    .tooltip-title {
+      color: #f9fafb;
+      font-weight: 600;
+      margin-bottom: 0.25rem;
+    }
+    
+    .tooltip-value {
+      color: #d1d5db;
+    }
+  }
+
+  .production-header {
+    background-color: #0047ab;
+    color: white;
+    text-align: right;
+  }
+  .pro-rej-box{
+    gap: 1rem;
+    margin-bottom: 0.5rem;
+    width: 100%;
+  }
+  ::ng-deep .p-datatable tbody > tr {
+    height: 50px; /* change to your desired height */
+  }
+  ::ng-deep .custom-row {
+    font-size: 12px !important;
+    // background-color: red !important;
+    height: 1px !important;
+  }
+  .custom-table ::ng-deep .p-datatable-tbody > tr {
+    border-bottom: 1px solid skyblue !important;
+  }
+  ::ng-deep td,th{
+    // background-color: black;
+    padding: 0.8rem;
+    border-bottom: 1px solid rgb(11, 13, 14) !important;
+  }
+  .production-cell {
+    background-color: #1976d2;
+    color: white;
+    text-align: center;
+  }
+  .rejection-header {
+    background-color: #0047ab;
+    color: white;
+    text-align: center;
+  }
+  
+  .rejection-cell {
+    background-color: #aed8e6;
+    color: white;
+    text-align: right;
+  }
+  
+  ::ng-deep .p-datatable th {
+    background-color: #0047ab;
+    color: white;
+    white-space: nowrap;
+    text-align: center;
+  }
+  
+  ::ng-deep .p-datatable td {
+    text-align: center;
+    white-space: nowrap;
+  }
+  ::ng-deep .p-datatable tbody > tr {
+    border-bottom: 1px solid skyblue !important;
+  }
+  
+  ::ng-deep .p-datatable td {
+    text-align: center;
+    white-space: nowrap;
+    border: none !important;
+  }
+    
+
+  ::ng-deep .p-paginator {
+    background-color: #f8fafc !important;
+    border: none !important;
+    padding: 0.5rem 1rem !important;
+    border-radius: 0 0 12px 12px !important;
+    display: flex !important;
+    justify-content: space-between !important;
+  }
+  
+  ::ng-deep .p-paginator .p-paginator-prev,
+  ::ng-deep .p-paginator .p-paginator-next {
+    min-width: 2rem !important;
+    height: 2rem !important;
+    color: #0047ab !important;
+    border-radius: 4px !important;
+    background: transparent !important;
+    border: 1px solid #0047ab !important;
+  }
+  
+  ::ng-deep .p-paginator .p-paginator-prev:disabled,
+  ::ng-deep .p-paginator .p-paginator-next:disabled {
+    opacity: 0.5 !important;
+    cursor: not-allowed !important;
+  }
+  
+  .current-page {
+    color: #0047ab;
+    font-weight: 500;
+    display: inline-flex;
+    align-items: center;
+  }
+  
+  ::ng-deep .p-paginator .p-paginator-current {
+    color: #374151 !important;
+    font-size: 0.875rem !important;
+  }
+  /* Hide all default paginator elements */
+::ng-deep .p-paginator .p-paginator-first,
+::ng-deep .p-paginator .p-paginator-prev,
+::ng-deep .p-paginator .p-paginator-pages,
+::ng-deep .p-paginator .p-paginator-next,
+::ng-deep .p-paginator .p-paginator-last,
+::ng-deep .p-paginator .p-paginator-rpp-options,
+::ng-deep .p-paginator .p-paginator-page-options {
+  display: none !important;
+}
+
+/* Only show our custom controls */
+::ng-deep .p-paginator .p-paginator-right-content {
+  display: flex !important;
+  align-items: center;
+}
+
+.current-page {
+  color: #0047ab;
+  font-weight: 500;
+  margin: 0 10px;
+}
+
+.p-paginator-prev, .p-paginator-next {
+  min-width: 2rem !important;
+  height: 2rem !important;
+  color: #0047ab !important;
+  border-radius: 4px !important;
+  background: transparent !important;
+  border: 1px solid #0047ab !important;
+  margin: 0 2px !important;
+}
+
+.pro-rej-box{
+    gap: 1rem;
+    margin-bottom: 0.5rem;
+    width: 100%;
+}
+
+.doughnut-box{
+    position: relative;
+    max-height: 140px;
+    max-width: 250px;
+}
+.d-text{
+    position: absolute;
+    font-size: 0.8rem !important;
+    font-weight: 400;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -70%);
+}
+.d-data{
+    position: absolute;
+    // font-size: 0.8rem !important;
+    // font-weight: 400;
+    top: 60%;
+    left: 50%;
+    transform: translate(-50%, 20%);
+}
+.oee-box{
+    background-color: #0047ab;
+    color: white;
+}
+.oee-box h1{
+    color: white;
+}
+
+::ng-deep .p-tabview {
+    /* Remove default bottom border from tab bar */
+    .p-tabview-nav {
+      border-bottom: none !important;
+      gap: 0.2rem;
+      padding: 0.2rem;
+    }
+  
+    /* Style for inactive tabs */
+    .p-tabview-nav-link {
+      padding: 0.8rem !important;
+      border-radius: 0.3rem !important;
+      border-bottom: none !important;
+      background-color: #f8f9fa !important; /* Light gray background for inactive tabs */
+    }
+  
+    /* Style for ACTIVE tab */
+    .p-tabview-nav li.p-highlight .p-tabview-nav-link {
+      background-color: #e9f5ff !important; /* Light blue background for active tab */
+      position: relative;
+    }
+  
+    /* Active tab underline (keeps default blue line) */
+    .p-tabview-nav li.p-highlight .p-tabview-nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background-color: #007ad9 !important; /* PrimeNG default blue */
+    }
+  }

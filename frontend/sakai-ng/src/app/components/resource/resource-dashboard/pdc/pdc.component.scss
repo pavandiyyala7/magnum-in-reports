@@ -1,0 +1,105 @@
+.dashboard-container {
+    display: flex;
+    flex-direction: column;
+    border: 3px solid black;
+    
+  }
+  .card{
+    padding: 1px;
+  }
+  .bt-1{
+    border-top: 2px solid black;
+  }
+  .sub-header-row{
+    border-right: 0;
+    justify-content: center;
+    align-items: center;
+    padding: 0.1rem 0.2rem;
+  }
+  .header-row{
+    padding: 0.2rem;
+  }
+  .header-row,  .sub-header-row, .machine-row, .content-row {
+    display: flex;
+    border-bottom: 2px solid black;
+  }
+  .filter-container {
+    display: flex;
+    gap: 1rem; 
+    align-items: flex-end;
+  }
+  .bb-0{
+    border-bottom: 0 !important;
+  }
+  .bb-1{
+    border-bottom: 2px solid black !important;
+  }
+  .header-text{
+    font-weight: 700;
+    color: black !important;
+  }
+  .footer-text{
+    font-size: 1rem;
+  }
+  
+  .header-cell {
+    flex: 1;
+    text-align: center;
+    padding: 10px;
+    font-size: 14px;
+    border-right: 2px solid black;
+    max-width: 35%;
+  }
+  ::ng-deep .custom-row{
+    background-color: #ffffff !important;
+  }
+  .br-0{
+    border-right: 0 !important;
+  }
+  .br-1{
+    border-right: 2px solid black;
+  }
+  .cell {
+    border-right: 2px solid black;
+    display: flex;
+    text-align: center;
+    flex-direction: column;
+    // justify-content: center;
+  }
+  .cell >p-chart{
+    max-height: 14.5rem;
+  }
+  ::ng-deep .customer-row >th{
+
+  }
+  ::ng-deep td,th{
+    // background-color: black;
+    padding: 0.2rem;
+    font-size: 0.8rem;
+  }
+  .highlight {
+    background-color: yellow;
+    text-align: center;
+    font-weight: bold;
+    font-size: 18px;
+  }
+  
+  .summary {
+    // margin-top: 10px;
+    font-size: 14px;
+    text-align: center;
+    padding: 0;
+  }
+  .summary p{
+    margin: 0;
+    border-bottom: 1px solid grey;
+  }
+  
+  p-chart {
+    width: 100% !important;
+  }
+  
+  // :host ::ng-deep .p-splitbutton .p-button {
+  //   padding: 0.5rem 0.75rem;
+  // }
+  

@@ -1,0 +1,92 @@
+<div >
+  <div class="filter-container mb-1">
+      <div class="filter-item">
+        <p-calendar [(ngModel)]="rangeDates" placeholder="Select Date Range" selectionMode="range" (onSelect)="applyFilters()" [readonlyInput]="true"></p-calendar>
+      </div>
+      
+      <div class="filter-item">
+        <p-dropdown [options]="shopFloorOptions" placeholder="Select Shopfloor" [(ngModel)]="selectedMachine" (onChange)="applyFilters()" optionLabel="label"></p-dropdown>
+      </div>
+      <div class="filter-item">
+        <p-dropdown [options]="departmentList" placeholder="Select Department" [(ngModel)]="selectedMachine" (onChange)="applyFilters()" optionLabel="label"></p-dropdown>
+      </div>
+      <div class="filter-item">
+        <p-dropdown [options]="machineList" placeholder="Select Machine" [(ngModel)]="selectedMachine" (onChange)="applyFilters()" optionLabel="label"></p-dropdown>
+      </div>
+      <p-splitButton 
+          [label]="selectedLabel"
+          [icon]="selectedIcon" 
+          [model]="items"
+          styleClass="p-button-primary"
+          appendTo="body">
+      </p-splitButton>
+  </div>
+    <div class="dashboard-container ">
+            
+        <div class="header-row">
+          <!-- <div class="header-cell header-text" colspan="1"> -->
+            <p-dropdown [options]="departmentOptions" [(ngModel)]="selectedDepartment" 
+                (onChange)="onDepartmentChange()" placeholder="Select Department">
+            </p-dropdown>
+          <!-- </div> -->
+        </div>
+        <div class="sub-header-row">
+            <!-- <div class="header-cell  header-text" colspan="1"> -->
+            <p-dropdown [options]="unitOptions" [(ngModel)]="selectedUnit" 
+                (onChange)="onUnitChange()" placeholder="Select Unit">
+            </p-dropdown>
+            <!-- </div> -->
+            <div class="header-cell header-text br-0" style="flex: 2;">Select Machine Number</div>
+            <p-dropdown [options]="machineOptions" [(ngModel)]="selectedMachine" 
+                [disabled]="!selectedUnit" placeholder="Select Machine">
+            </p-dropdown>
+            <div class="cell br-0 header-cell header-text" style="flex: 2;">Loss Reasons & Time</div>
+        </div>
+      
+        <div class="content-row bb-0">
+            <div class="br-1">
+                <div class="cell br-0" style="flex: 2;">
+                  <b class="bb-1 header-text">OEE: Overall Equipment Effectiveness</b>
+                  <p-chart type="bar" [data]="oeeData" style="height:300px;"></p-chart>
+                </div>
+                <div class="cell br-0" style="flex: 2;">
+                  <b class="bt-1 bb-1 header-text">Plan vs Actual</b>
+                  <p-chart type="bar" [data]="planVsActualData" style="height:300px;"></p-chart>
+                </div>
+            </div>
+          <div class="cell" style="flex: 1;" rowspan="2">
+            <b class="bb-1 header-text ">Loss Analysis</b>
+            <p-chart type="pie" [data]="pieData" style="height:400px;"></p-chart>
+          </div>
+          <div class="cell br-0" style="flex: 2;" rowspan="2">
+            <p-table [value]="lossReasons" [scrollable]="true" scrollHeight="400px">
+              <ng-template pTemplate="header">
+                <tr class="custom-row ">
+                  <th class="header-text bg-white br-1 bb-1">Loss Reason</th>
+                  <th class="header-text bg-white bb-1">Time in Hrs</th>
+                </tr>
+              </ng-template>
+              <ng-template pTemplate="body" let-loss>
+                <tr class="custom-row ">
+                  <td class="br-1 bb-1">{{ loss.reason }}</td>
+                  <td class="bb-1">{{ loss.time }}</td>
+                </tr>
+              </ng-template>
+              <ng-template pTemplate="footer">
+                <tr class="custom-row footer-row">
+                  <td class="footer-text header-text bg-white bb-1">Total Time:</td>
+                  <td class="footer-text header-text bg-white bb-1">{{ totalTime }}</td>
+                </tr>
+              </ng-template>
+            </p-table>
+            <div class="summary">
+              <p>Machine Utilization</p>
+              <p><b >Available Hours:</b> {{ availableHours }}</p>
+              <p><b>Planned Hours:</b> {{ plannedHours }}</p>
+              <p class="footer-text header-text">{{ machineUtilization }}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+</div>

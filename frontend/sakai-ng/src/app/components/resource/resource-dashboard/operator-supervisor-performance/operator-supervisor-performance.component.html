@@ -1,0 +1,111 @@
+<div class="card px-4 py-1">
+    <div class="text-center">
+        <h2 class="text-xl font-bold  mb-1"  style="color: #007ad9;">Operator Supervisor Performance</h2>
+    </div>  
+    
+    <div class="filter-container mb-1">
+        <div class="filter-item">
+          <p-calendar [(ngModel)]="rangeDates" placeholder="Select Date Range" (onSelect)="applyFilters()" selectionMode="range" [readonlyInput]="true"></p-calendar>
+        </div>
+        
+        <div class="filter-item">
+          <p-dropdown [options]="supervisorList" placeholder="Select Supervisor Name" (onChange)="applyFilters()" [(ngModel)]="selectedSupervisor" optionLabel="label"></p-dropdown>
+        </div>
+        
+        <div class="filter-item">
+          <p-dropdown [options]="operatorList" placeholder="Select Operator Name" (onChange)="applyFilters()" [(ngModel)]="selectedOperator" optionLabel="label"></p-dropdown>
+        </div>
+        
+        <p-splitButton 
+          [label]="selectedLabel"
+          [icon]="selectedIcon" 
+          [model]="items"
+          styleClass="p-button-primary"
+          appendTo="body">
+        </p-splitButton>
+      </div>
+      <div class="flex">
+        <div class="shadow rounded-lg p-2 text-center flex-g-1 mx-1" style="background-color: #007ad9; color: white;">
+        <p class="text-sm font-medium mb-1">Working Days</p>
+        <p class="text-xl font-bold">{{totalWorkingDays}}</p>
+        </div>
+        <div class="shadow rounded-lg p-2 text-center flex-g-1 mx-1" style="background-color: #007ad9; color: white;">
+          <p class="text-sm font-medium mb-1">Production %</p>
+          <p class="text-xl font-bold">{{productionPercentage}}</p>
+        </div>
+        <div class="shadow rounded-lg p-2 text-center flex-g-1 mx-1" style="background-color: #007ad9; color: white;">
+          <p class="text-sm font-medium mb-1">Rejection %</p>
+          <p class="text-xl font-bold">{{rejectionPercentage}}</p>
+        </div>
+      </div>
+
+      <div class=" flex bg-white shadow rounded-lg p-2 pro-rej-box">
+        <div class="flex-g-1" >
+            <p-chart baseChart type="bar" [data]="chartData" [options]="chartOptions" [plugins]="[pluginDatalabels]"></p-chart>
+        </div>
+        <div class="flex-g-1">
+          <p-table [value]="supervisors" [paginator]="true" [rows]="3" [responsiveLayout]="'scroll'">
+            <ng-template pTemplate="header">
+              <tr class="custom-row ">
+                <th class="production-header">S.no</th>
+                <th class="production-header">Supervisor Name</th>
+                <th class="production-header ">Production %</th>
+                <th class="production-header">Rejection %</th>
+              </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-row let-i="rowIndex">
+              <tr class="custom-row">
+                <td >{{ i + 1 }}.</td>
+                <td >{{ row.name }}</td>
+                <td class="production-cell bg-success">{{ row.production }}%</td>
+                <td class="production-cell bg-failure">{{ row.rejection }}%</td>
+              </tr>
+            </ng-template>
+          </p-table>
+        </div>
+      </div>
+  
+    <div class="mt-2 bg-white shadow rounded-lg overflow-hidden">
+        <p-table [value]="filteredData" 
+                 [paginator]="true" 
+                 [rows]="9"
+                 
+                 [scrollable]="true" 
+                 scrollHeight="400px"
+                 styleClass="p-datatable-striped p-datatable-sm">
+          <ng-template pTemplate="header">
+            <tr class="custom-row">
+              <th class="rejection-header" pSortableColumn="date">Date</th>
+              <th class="rejection-header" pSortableColumn="machine">Shift</th>
+              <th class="rejection-header" pSortableColumn="shift">Machine Number</th>
+              <th class="rejection-header" pSortableColumn="part">Supervisor Name</th>
+              <th class="rejection-header" pSortableColumn="planned">Operator Name</th>
+              <th class="rejection-header" pSortableColumn="produced">Part Description</th>
+              <th class="rejection-header" pSortableColumn="rejection">Planned Quantity</th>
+              <th class="rejection-header" pSortableColumn="rejection">Rejection Quantity</th>
+              <th class="rejection-header" pSortableColumn="actualCycle">Rejection</th>
+            </tr>
+          </ng-template>
+          <ng-template pTemplate="body" let-row>
+            <tr class="custom-row">
+              <td>{{ row.date }}</td>
+              <td>{{ row.shift }}</td>
+              <td>{{ row.machine }}</td>
+              <td class="max-w-xs truncate">{{ row.supervisor }}</td>
+              <td>{{ row.operator }}</td>
+              <td>{{ row.part }}</td>
+              <td [ngClass]="{'text-green-600': row.produced >= row.planned, 'text-red-600': row.produced < row.planned}">
+                {{ row.planned }}
+              </td>
+              <td [ngClass]="{'text-green-600': row.produced >= row.planned, 'text-red-600': row.produced < row.planned}">
+                {{ row.produced }}
+              </td>
+              <td [ngClass]="{'text-red-600': (row.rejection / row.produced) > 0.03}">
+                {{ row.rejection }} 
+              </td>
+            </tr>
+          </ng-template>
+        </p-table>
+      </div>
+    
+</div>

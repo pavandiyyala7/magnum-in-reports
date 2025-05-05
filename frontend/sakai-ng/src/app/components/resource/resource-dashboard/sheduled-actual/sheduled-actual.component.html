@@ -1,0 +1,118 @@
+<div class="card px-4 py-1">
+    <div class="text-center">
+        <h2 class="text-xl font-bold  mb-1"  style="color: #007ad9;">Schedule vs Actual Report</h2>
+    </div>  
+    
+    <div class="filter-container mb-1">
+        <div class="filter-item">
+          <p-calendar [(ngModel)]="rangeDates" placeholder="Select Date Range" (onSelect)="applyListFilters()" selectionMode="range" [readonlyInput]="true"></p-calendar>
+        </div>
+        
+        <div class="filter-item">
+          <p-dropdown [options]="customerList" placeholder="Select Customer Name" (onChange)="applyListFilters()" [(ngModel)]="selectedCustomer" optionLabel="label"></p-dropdown>
+        </div>
+        
+        <div class="filter-item">
+          <p-dropdown [options]="partList" placeholder="Select Part Description" (onChange)="applyListFilters()" [(ngModel)]="selectedDescription" optionLabel="label"></p-dropdown>
+        </div>
+        
+        <p-splitButton 
+          [label]="selectedLabel"
+          [icon]="selectedIcon" 
+          [model]="items"
+          styleClass="p-button-primary"
+          appendTo="body">
+        </p-splitButton>
+      </div>
+      <div class="flex ">
+        <div class="shadow rounded-lg p-2 text-center flex-g-1 mx-1" style="background-color: #007ad9; color: white;">
+          <p class="text-sm font-medium mb-1">Schedule vs Actual</p>
+          <p class="text-xl font-bold">{{scheduleCompletionPercentage}}%</p>
+        </div>
+        <div class="shadow rounded-lg p-2 text-center flex-g-1 mx-1" style="background-color: #007ad9; color: white;">
+          <p class="text-sm font-medium mb-1">PO Value</p>
+          <p class="text-xl font-bold">{{totalPoValue}}</p>
+        </div>
+        <div class="shadow rounded-lg p-2 text-center flex-g-1 mx-1" style="background-color: #007ad9; color: white;">
+          <p class="text-sm font-medium mb-1">Total Workorders</p>
+          <p class="text-xl font-bold">{{totalWorkorders}}</p>
+        </div>
+        <div class="shadow rounded-lg p-2 text-center flex-g-1 mx-1" style="background-color: #007ad9; color: white;">
+          <p class="text-sm font-medium mb-1">PO Quantity</p>
+          <p class="text-xl font-bold">{{totalPoQuantity}}</p>
+        </div>
+        <div class="shadow rounded-lg p-2 text-center flex-g-1 mx-1" style="background-color: #007ad9; color: white;">
+          <p class="text-sm font-medium mb-1">Pending Quantity</p>
+          <p class="text-xl font-bold">{{totalPendingQuantity}}</p>
+        </div>
+      </div>
+      
+      <div class=" flex bg-white shadow rounded-lg p-2 pro-rej-box">
+        <div >
+            <p-chart baseChart type="bar" [data]="barChartData" [options]="barChartOptions" [plugins]="[pluginDatalabels]"></p-chart>
+        </div>
+        <div class="flex-g-1">
+          <p-table [value]="scheduleSummary" [paginator]="true" [rows]="3" [responsiveLayout]="'scroll'">
+            <ng-template pTemplate="header">
+              <tr class="custom-row ">
+                <th class="production-header">S.no</th>
+                <th class="production-header">Customer Name</th>
+                <th class="production-header">Schedule vs Actual %</th>
+              </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-row let-i="rowIndex">
+              <tr class="custom-row">
+                <td >{{ i + 1 }}.</td>
+                <td >{{ row.customer }}</td>
+                <td class="production-cell">{{ row.value }}%</td>
+              </tr>
+            </ng-template>
+          </p-table>
+        </div>
+      </div>
+      <div class="line-chart">
+
+          <p-chart type="line" [data]="lineChartData" [options]="lineChartOptions"></p-chart>
+      </div>
+  
+    <div class="mt-2 bg-white shadow rounded-lg overflow-hidden">
+        <p-table [value]="filteredData" 
+                 [paginator]="true" 
+                 [rows]="9"
+                 
+                 [scrollable]="true" 
+                 scrollHeight="400px"
+                 styleClass="p-datatable-striped p-datatable-sm">
+          <ng-template pTemplate="header">
+            <tr class="custom-row">
+              <th class="rejection-header" pSortableColumn="date">Customer Name</th>
+              <th class="rejection-header" pSortableColumn="machine">Workorder number</th>
+              <th class="rejection-header" pSortableColumn="shift">Part Description</th>
+              <th class="rejection-header" pSortableColumn="part">PO Quantity</th>
+              <th class="rejection-header" pSortableColumn="planned">Actual Injection Modeling Quantity</th>
+              <th class="rejection-header" pSortableColumn="produced">Pending production Quantity</th>
+              <th class="rejection-header" pSortableColumn="rejection">PO Value </th>
+              <th class="rejection-header" pSortableColumn="actualCycle">Schedule vs Actual </th>
+            </tr>
+          </ng-template>
+          <ng-template pTemplate="body" let-row>
+            <tr class="custom-row">
+              <td>{{ row.customer }}</td>
+              <td>{{ row.workorder }}</td>
+              <td>{{ row.description }}</td>
+              <td class="max-w-xs truncate">{{ row.poQuantity }}</td>
+              <td>{{ row.actualQuantity }}</td>
+              <td [ngClass]="{'text-green-600': row.produced >= row.planned, 'text-red-600': row.produced < row.planned}">
+                {{ row.pendingQuantity }}
+              </td>
+              <td [ngClass]="{'text-red-600': (row.rejection / row.produced) > 0.03}">
+                {{ row.poValue }} 
+              </td>
+              <td>{{ row.schedulePercent }}%</td>
+            </tr>
+          </ng-template>
+        </p-table>
+      </div>
+    
+  </div>
+  
